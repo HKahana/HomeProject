@@ -1,4 +1,4 @@
-/*import java.util.ArrayList;
+import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,4 +45,4 @@ public class MyAPI {
     public ArrayList<CovidInfection> getCovidInfections() {
         return myDatabase.getInfectionsList();
     }
-}*/
+}

@@ -1,7 +1,4 @@
-import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 
 public class MyDatabase {
@@ -24,7 +21,7 @@ public class MyDatabase {
 
     public void insertMemberPersonalInfo (Member m) {
         try {
-            String query = "INSERT INTO personal_info(id, full_name, city, street, house_number, date_of_birth, phone_number, cell_number, photo) VALUES (?,?,?,?,?,?,?,?,null)";
+            String query = "INSERT INTO personal_info(id, full_name, city, street, house_number, date_of_birth, phone_number, cell_number, photo) VALUES (?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, m.getId());
             ps.setString(2, m.getFullName());
@@ -34,6 +31,7 @@ public class MyDatabase {
             ps.setDate(6, java.sql.Date.valueOf(m.getDob()));
             ps.setString(7, m.getPhoneNum());
             ps.setString(8, m.getCellNum());
+            ps.setBinaryStream(9, m.getPhoto());
 
             ps.executeUpdate();
 
@@ -150,7 +148,7 @@ public class MyDatabase {
             while (rs.next()) {
                 m = new Member(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getInt(5), rs.getDate(6).toLocalDate(),
-                        rs.getString(7), rs.getString(8));
+                        rs.getString(7), rs.getString(8), rs.getBinaryStream(9));
                 list.add(m);
             }
             if(rs.isClosed()) {
@@ -174,7 +172,7 @@ public class MyDatabase {
             if(rs.next()) {
                 m = new Member(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getInt(5), rs.getDate(6).toLocalDate(),
-                        rs.getString(7), rs.getString(8));
+                        rs.getString(7), rs.getString(8), rs.getBinaryStream(9));
             }
             else
                 System.out.println("No member with the given ID");

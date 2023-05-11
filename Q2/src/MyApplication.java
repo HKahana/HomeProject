@@ -1,4 +1,4 @@
-/*import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -13,4 +13,4 @@ public class MyApplication {
     public MyDatabase myDatabase() {
         return new MyDatabase();
     }
-}*/
+}

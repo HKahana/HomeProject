@@ -1,4 +1,5 @@
 import java.io.InputStream;
+import java.nio.file.LinkPermission;
 import java.time.LocalDate;
 
 public class Member {
@@ -11,8 +12,9 @@ public class Member {
     private LocalDate dob;
     private String phoneNum;
     private String cellNum;
+    private InputStream photo;
 
-    public Member(String id, String fullName, String city, String street, int houseNum, LocalDate dob, String phoneNum, String cellNum) {
+    public Member(String id, String fullName, String city, String street, int houseNum, LocalDate dob, String phoneNum, String cellNum, InputStream photo) {
         if(id.length() != 9) {
             System.out.println("Error. Member's id must be exactly 9 digits");
             return;
@@ -30,6 +32,7 @@ public class Member {
         this.dob = dob;
         this.phoneNum = phoneNum;
         this.cellNum = cellNum;
+        this.photo = photo;
     }
 
     public String getId() {
@@ -96,6 +99,14 @@ public class Member {
         this.cellNum = cellNum;
     }
 
+    public InputStream getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(InputStream photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
@@ -107,6 +118,7 @@ public class Member {
                 ", dob=" + dob +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", cellNum='" + cellNum + '\'' +
+                ", photo= " + photo +
                 '}';
     }
 }
