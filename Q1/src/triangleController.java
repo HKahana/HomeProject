@@ -26,11 +26,12 @@ public class triangleController {
 
     @FXML
     void calculatePerimeterPressed(ActionEvent event) {
-        //get width
         width = Integer.parseInt(widthField.getText());
+        height = Integer.parseInt(heightField.getText());
         //print result
-        resultsTextArea.setText("The perimeter of the triangular building is: " +
-                Math.sqrt(Math.pow(height, 2) + Math.pow(width/2, 2)) * 2 + width);
+        double hypotenuse = Math.sqrt(Math.pow(width/2, 2) + Math.pow(height, 2));
+        double perimeter = width + (2 * hypotenuse);
+        resultsTextArea.setText("The triangular building's perimeter is: " + perimeter);
 
     }
 
